@@ -13,7 +13,7 @@ function ProductCard({ image, title, description, price }) {
         <p className="food-description">{description}</p>
 
         <div className="food-footer">
-          <span className="food-price">₹{price}</span>
+          <span className="food-price">Rs.{price}</span>
           <button className="food-btn">Order Now</button>
         </div>
       </div>

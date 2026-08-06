@@ -1,31 +1,7 @@
-import './App.css';
-import ProductCard from './common/ProductCard';
+import ProductRoutes from './routes/ProductRoutes';
 
 function App() {
-  return (
-    <div className="container">
-      <ProductCard
-        image="/images/poha.jpg"
-        title="Poha"
-        description="Fresh and healthy breakfast made with flattened rice."
-        price={80}
-      />
-
-      <ProductCard
-        image="/images/biryani.jpg"
-        title="Biryani"
-        description="Aromatic basmati rice with rich spices and vegetables."
-        price={180}
-      />
-
-      <ProductCard
-        image="/images/paneer.jpg"
-        title="Paneer Curry"
-        description="Soft paneer cubes cooked in creamy tomato gravy."
-        price={220}
-      />
-    </div>
-  );
+  return <ProductRoutes />;
 }
 
 export default App;
