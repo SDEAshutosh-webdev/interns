@@ -1,12 +1,12 @@
-import { useState } from 'react'
-import './App.css'
-
+import './App.css';
 import Navbar from "./Common/Navbar";
+import ProductRoutes from './routes/ProductRoutes';
 
 function App() {
   return (
     <>
       <Navbar />
+      <ProductRoutes />
     </>
   );
 }
