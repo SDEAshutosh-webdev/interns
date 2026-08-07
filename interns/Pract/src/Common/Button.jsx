@@ -2,7 +2,7 @@ import "../Styles/Button.css";
 
 function Button({
   text,
-  variant = "primary",
+  variant ="primary",
   type = "button",
   onClick,
   disabled = false,
