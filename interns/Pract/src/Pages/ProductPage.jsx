@@ -1,6 +1,7 @@
 import ProductCard from '../Common/ProductCard';
 import '../App.css';
 
+
 function ProductPage() {
   return (
     <div className="container">
