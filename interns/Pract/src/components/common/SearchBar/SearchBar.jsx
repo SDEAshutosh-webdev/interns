@@ -1,13 +1,12 @@
+import "../../../styles/SearchBar.css";
 
-import "./SearchBar.css";
-
-const SearchBar = ({ search, setSearch }) => {
+const SearchBar = ({ search, setSearch, placeholder = "Search delicious food..." }) => {
   return (
     <div className="search-bar-container">
       <span className="search-icon">🔍</span>
       <input
         type="text"
-        placeholder="Search food items (e.g. Poha, Biryani)..."
+        placeholder={placeholder}
         value={search}
         onChange={(e) => setSearch(e.target.value)}
         className="search-input"

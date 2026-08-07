@@ -1,8 +1,10 @@
 import { Link, useLocation } from "react-router-dom";
-import "./Navbar.css";
+import { useCart } from "../../../hooks/useCart";
+import "../../../styles/Navbar.css";
 
 function Navbar() {
   const location = useLocation();
+  const { totalCount } = useCart();
 
   return (
     <nav className="navbar">
@@ -16,14 +18,16 @@ function Navbar() {
         <li className={location.pathname === "/" ? "active" : ""}>
           <Link to="/">Home</Link>
         </li>
-        <li className={location.pathname === "/products" ? "active" : ""}>
-          <Link to="/products">Products</Link>
+        <li className={location.pathname === "/menu" ? "active" : ""}>
+          <Link to="/menu">Menu</Link>
+        </li>
+        <li className={location.pathname === "/cart" ? "active cart-link" : "cart-link"}>
+          <Link to="/cart">
+            🛒 Cart {totalCount > 0 && <span className="cart-badge">{totalCount}</span>}
+          </Link>
         </li>
         <li className={location.pathname === "/contact" ? "active" : ""}>
           <Link to="/contact">Contact</Link>
-        </li>
-        <li className={location.pathname === "/button" ? "active" : ""}>
-          <Link to="/button">UI Components</Link>
         </li>
       </ul>
     </nav>

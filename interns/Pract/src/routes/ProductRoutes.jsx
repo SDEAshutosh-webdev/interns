@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import ProductPage from "../pages/ProductPage";
+import ProductPage from "../pages/Menu/MenuPage";
 
 function ProductRoutes() {
   return (

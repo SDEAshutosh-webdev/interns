@@ -1,15 +1,14 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Button from '../Common/Button';
-import Home from "../Pages/Home";
-function ButtonRoutses() {
+import { Routes, Route } from "react-router-dom";
+import Home from "../pages/Home/Home";
+import Button from "../components/common/Button/Button";
+
+function ButtonRoutes() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/button" element={<Button text="Primary Button" />} />
-      </Routes>   
-    </BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/button" element={<Button text="Primary Button" />} />
+    </Routes>
   );
 }
 
-export default ButtonRoutses;
+export default ButtonRoutes;

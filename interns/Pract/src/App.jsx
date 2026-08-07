@@ -1,23 +1,19 @@
-import { useState } from 'react'
-import Button from "./Common/Button";
-import ButtonRoutes from "./routes/ButtonRoutes";
-import ProductRoutes from './routes/ProductRoutes';
-import './App.css'
+import Navbar from "./components/common/Navbar/Navbar";
+import AppRoutes from "./routes/AppRoutes";
+import { CartProvider } from "./context/CartProvider";
+import "./styles/App.css";
 
 function App() {
-  const [count, setCount] = useState(0);
   return (
-    <>
-      <ProductRoutes />;
-      <ButtonRoutes />;
-      <div className="button-container">
-      <Button text="Save" variant="primary"/>
+    <CartProvider>
+      <div className="app-container">
+        <Navbar />
+        <main className="main-content">
+          <AppRoutes />
+        </main>
       </div>
-    
-    </>
-  )
+    </CartProvider>
+  );
 }
 
 export default App;
-
-
