@@ -1,13 +1,11 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import ProductPage from '../pages/ProductPage';
+import { Routes, Route } from "react-router-dom";
+import ProductPage from "../pages/ProductPage";
 
 function ProductRoutes() {
   return (
-    <BrowserRouter>
-      <Routes>
-         <Route path="/" element={<ProductPage />} />
-      </Routes>
-    </BrowserRouter>
+    <Routes>
+      <Route path="/" element={<ProductPage />} />
+    </Routes>
   );
 }
 

@@ -1,18 +1,19 @@
-<<<<<<< HEAD
-import About from "./Pages/About";
+import { useState } from 'react';
+import Button from "./Common/Button";
+import ButtonRoutes from "./routes/ButtonRoutes";
+import ProductRoutes from './routes/ProductRoutes';
+import About from "./Pages/About"; 
+import './App.css';
 
 function App() {
+  const [count, setCount] = useState(0);
+
   return (
     <div>
-      <About />
+      <ProductRoutes />
+      
     </div>
   );
-=======
-import ProductRoutes from './routes/ProductRoutes';
-
-function App() {
-  return <ProductRoutes />;
->>>>>>> 5b504721073e2ddca6dc25e8f19ff0dbceb83a5c
 }
 
 export default App;
