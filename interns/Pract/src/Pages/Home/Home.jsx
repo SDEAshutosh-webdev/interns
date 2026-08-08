@@ -5,11 +5,22 @@ import Button from "../../components/common/Button/Button";
 import FoodCard from "../../components/features/food/FoodCard";
 import { useFoodItems } from "../../hooks/useFoodItems";
 import "../../styles/Home.css";
+import FoodDetailsModal from "../../components/features/food/FoodDetailsModal";
 
 function Home() {
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
   const { foodItems, loading } = useFoodItems("All");
+  const [selectedItem, setSelectedItem] = useState(null);
+
+  const handleOpen = (item) => {
+  setSelectedItem(item);
+  };
+
+  const closePopup = () => {
+    setSelectedItem(null);
+  };
+  
 
   const filteredItems = foodItems.filter(
     (item) =>
@@ -53,7 +64,7 @@ function Home() {
         ) : filteredItems.length > 0 ? (
           <div className="products-grid">
             {filteredItems.map((item) => (
-              <FoodCard key={item.id} item={item} />
+             <FoodCard key={item.id} item={item} isOpen={() =>handleOpen(item)}/>
             ))}
           </div>
         ) : (
@@ -72,6 +83,9 @@ function Home() {
           <Button text="Order Now" variant="success" onClick={() => navigate("/menu")} />
         </div>
       </section>
+       {selectedItem && (
+        <FoodDetailsModal item={selectedItem} closePopup={closePopup} />
+      )}
     </div>
   );
 }

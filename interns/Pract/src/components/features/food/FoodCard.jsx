@@ -2,12 +2,12 @@ import { useCart } from "../../../hooks/useCart";
 import { formatPrice } from "../../../utils/formatters";
 import "../../../styles/FoodCard.css";
 
-function FoodCard({ item }) {
+function FoodCard({ item  , isOpen}) {
   const { addToCart } = useCart();
   const { image, title, description, price, isPopular, rating } = item;
 
   return (
-    <div className="food-card">
+    <div className="food-card" onClick={isOpen}>
       <div className="food-image-wrapper">
         <img src={image} alt={title} className="food-image" />
         {isPopular && <span className="badge">Popular</span>}

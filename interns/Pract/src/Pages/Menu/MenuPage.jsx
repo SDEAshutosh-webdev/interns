@@ -3,6 +3,7 @@ import FoodCard from "../../components/features/food/FoodCard";
 import SearchBar from "../../components/common/SearchBar/SearchBar";
 import { useFoodItems } from "../../hooks/useFoodItems";
 import "../../styles/MenuPage.css";
+import FoodDetailsModal from "../../components/features/food/FoodDetailsModal";
 
 const CATEGORIES = ["All", "Breakfast", "Main Course", "Snacks", "Italian"];
 
@@ -10,6 +11,15 @@ function MenuPage() {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [search, setSearch] = useState("");
   const { foodItems, loading } = useFoodItems(selectedCategory);
+  const [selectedItem, setSelectedItem] = useState(null);
+
+  const handleOpen = (item) => {
+  setSelectedItem(item);
+  };
+
+  const closePopup = () => {
+    setSelectedItem(null);
+  };
 
   const filteredItems = foodItems.filter(
     (item) =>
@@ -47,7 +57,7 @@ function MenuPage() {
         ) : filteredItems.length > 0 ? (
           <div className="products-grid">
             {filteredItems.map((item) => (
-              <FoodCard key={item.id} item={item} />
+              <FoodCard key={item.id} item={item} isOpen={()=>handleOpen(item)} />
             ))}
           </div>
         ) : (
@@ -56,6 +66,10 @@ function MenuPage() {
           </div>
         )}
       </div>
+
+      {selectedItem && (
+        <FoodDetailsModal item={selectedItem} closePopup={closePopup} />
+      )}
     </div>
   );
 }
