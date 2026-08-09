@@ -4,7 +4,7 @@ import { formatPrice } from "../../utils/formatters";
 import Button from "../../components/common/Button/Button";
 import { useNavigate } from "react-router-dom";
 import "../../styles/CartPage.css";
-import CheckoutForm from "../components/features/cart/CheckoutForm";
+import CheckoutForm from "../../components/features/cart/CheckoutFrom";
 
 
 function CartPage() {
