@@ -1,11 +1,13 @@
 import React from "react";
 import "./Contact.css";
+import FaqAccordion from "./FaqAccordion";
 
 function Contact() {
   return (
-    <div className="contact-container">
+    <div className="contact-page">
 
       <h1>Contact Us</h1>
+
       <p className="contact-intro">
         Have questions about our food, delivery, or services?
         We would love to hear from you!
@@ -35,30 +37,29 @@ function Contact() {
 
         </div>
 
-
         {/* Contact Form */}
         <div className="contact-form">
 
           <h2>Send Message</h2>
 
-          <input 
-            type="text" 
-            placeholder="Your Name" 
+          <input
+            type="text"
+            placeholder="Your Name"
           />
 
-          <input 
-            type="email" 
-            placeholder="Your Email" 
+          <input
+            type="email"
+            placeholder="Your Email"
           />
 
-          <input 
-            type="text" 
-            placeholder="Subject" 
+          <input
+            type="text"
+            placeholder="Subject"
           />
 
-          <textarea 
-            placeholder="Your Message">
-          </textarea>
+          <textarea
+            placeholder="Your Message"
+          />
 
           <button>
             Send Message
@@ -67,6 +68,9 @@ function Contact() {
         </div>
 
       </div>
+
+      {/* Task 10 - FAQ Accordion */}
+      <FaqAccordion />
 
     </div>
   );
