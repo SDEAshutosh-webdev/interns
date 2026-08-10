@@ -6,7 +6,7 @@ export const foodService = {
   getAllFoodItems: async () => {
     // Simulated network delay
     await new Promise((resolve) => setTimeout(resolve, 150));
-    return MOCK_FOOD_ITEMS;
+    return MOCK_FOOD_ITEMS; 
   },
 
   // Fetch food item by ID
