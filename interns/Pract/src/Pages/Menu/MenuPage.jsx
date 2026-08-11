@@ -8,6 +8,7 @@ import SortControl from "../../components/features/SortControl";
 import { useFoodItems } from "../../hooks/useFoodItems";
 
 import "../../styles/MenuPage.css";
+import FoodDetailsModal from "../../components/features/food/FoodDetailsModal";
 
 
 const CATEGORIES = ["All", "Breakfast", "Main Course", "Snacks", "Italian"];
@@ -22,8 +23,16 @@ const CATEGORIES = [
 function MenuPage() {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [search, setSearch] = useState("");
-  const [allFoodItems, setAllFoodItems] = useState([]);
   const { foodItems, loading } = useFoodItems(selectedCategory);
+  const [selectedItem, setSelectedItem] = useState(null);
+
+  const handleOpen = (item) => {
+  setSelectedItem(item);
+  };
+
+  const closePopup = () => {
+    setSelectedItem(null);
+  };
   const [sortOption, setSortOption] = useState("default");
 
   const { foodItems, loading } =
@@ -184,6 +193,8 @@ const categoryCounts = {
         ) : sortedItems.length > 0 ? (
 
           <div className="products-grid">
+            {filteredItems.map((item) => (
+              <FoodCard key={item.id} item={item} isOpen={()=>handleOpen(item)} />
 
             {sortedItems.map((item) => (
               <FoodCard
@@ -206,6 +217,9 @@ const categoryCounts = {
 
       </div>
 
+      {selectedItem && (
+        <FoodDetailsModal item={selectedItem} closePopup={closePopup} />
+      )}
     </div>
   );
 }
