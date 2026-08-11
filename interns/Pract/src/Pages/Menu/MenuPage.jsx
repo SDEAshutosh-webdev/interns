@@ -7,27 +7,21 @@ import SortControl from "../../components/features/SortControl";
 
 import { useFoodItems } from "../../hooks/useFoodItems";
 
-import "../../styles/MenuPage.css";
+import "../../Styles/MenuPage.css";
 import FoodDetailsModal from "../../components/features/food/FoodDetailsModal";
 
 
 const CATEGORIES = ["All", "Breakfast", "Main Course", "Snacks", "Italian"];
-const CATEGORIES = [
-  "All",
-  "Breakfast",
-  "Main Course",
-  "Snacks",
-  "Italian",
-];
+
 
 function MenuPage() {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [search, setSearch] = useState("");
-  const { foodItems, loading } = useFoodItems(selectedCategory);
   const [selectedItem, setSelectedItem] = useState(null);
+  const [allFoodItems, setAllFoodItems] = useState([]);
 
   const handleOpen = (item) => {
-  setSelectedItem(item);
+    setSelectedItem(item);
   };
 
   const closePopup = () => {
@@ -49,25 +43,25 @@ function MenuPage() {
   }, []);
 
   // calculate how many items are in the each category
-const categoryCounts = {
-  All: allFoodItems.length,
+  const categoryCounts = {
+    All: allFoodItems.length,
 
-  Breakfast: allFoodItems.filter(
-    (item) => item.category === "Breakfast"
-  ).length,
+    Breakfast: allFoodItems.filter(
+      (item) => item.category === "Breakfast"
+    ).length,
 
-  "Main Course": allFoodItems.filter(
-    (item) => item.category === "Main Course"
-  ).length,
+    "Main Course": allFoodItems.filter(
+      (item) => item.category === "Main Course"
+    ).length,
 
-  Snacks: allFoodItems.filter(
-    (item) => item.category === "Snacks"
-  ).length,
+    Snacks: allFoodItems.filter(
+      (item) => item.category === "Snacks"
+    ).length,
 
-  Italian: allFoodItems.filter(
-    (item) => item.category === "Italian"
-  ).length,
-};
+    Italian: allFoodItems.filter(
+      (item) => item.category === "Italian"
+    ).length,
+  };
   const filteredItems = foodItems.filter(
     (item) =>
       item.title
@@ -131,12 +125,12 @@ const categoryCounts = {
         </div>
 
       </div>
-    <CategoryFilter
-      categories={CATEGORIES}
-      selectedCategory={selectedCategory}
-      onCategoryChange={setSelectedCategory}
-      categoryCounts={categoryCounts}
-    />
+      <CategoryFilter
+        categories={CATEGORIES}
+        selectedCategory={selectedCategory}
+        onCategoryChange={setSelectedCategory}
+        categoryCounts={categoryCounts}
+      />
 
 
       {/* ========================= */}
@@ -148,11 +142,10 @@ const categoryCounts = {
         {CATEGORIES.map((cat) => (
           <button
             key={cat}
-            className={`pill ${
-              selectedCategory === cat
-                ? "active"
-                : ""
-            }`}
+            className={`pill ${selectedCategory === cat
+              ? "active"
+              : ""
+              }`}
             onClick={() =>
               setSelectedCategory(cat)
             }
@@ -193,16 +186,13 @@ const categoryCounts = {
         ) : sortedItems.length > 0 ? (
 
           <div className="products-grid">
-            {filteredItems.map((item) => (
-              <FoodCard key={item.id} item={item} isOpen={()=>handleOpen(item)} />
-
             {sortedItems.map((item) => (
               <FoodCard
                 key={item.id}
                 item={item}
+                isOpen={() => handleOpen(item)}
               />
             ))}
-
           </div>
 
         ) : (
@@ -222,6 +212,7 @@ const categoryCounts = {
       )}
     </div>
   );
+
 }
 
 export default MenuPage;

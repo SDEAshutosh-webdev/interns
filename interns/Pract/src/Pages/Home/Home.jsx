@@ -46,7 +46,6 @@ function Home() {
             <Button text="Reset Search" variant="secondary" onClick={() => setSearch("")} />
           </div>
         )}
-      </section>
 
       {/* Call To Action Banner */}
       <section className="cta-banner">
