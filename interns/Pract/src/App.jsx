@@ -4,6 +4,8 @@ import Footer from "./components/common/Footer/Footer";
 import AppRoutes from "./routes/AppRoutes";
 import { CartProvider } from "./context/CartProvider";
 import "./Styles/App.css";
+import { WishlistProvider } from "./context/WishlistContext";
+import "./styles/App.css";
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);

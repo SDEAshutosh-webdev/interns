@@ -2,12 +2,16 @@ import { useState } from "react";
 import { useCart } from "../../hooks/useCart";
 import { formatPrice } from "../../utils/formatters";
 import Button from "../../components/common/Button/Button";
+import CouponDiscount from "../../components/features/cart/CouponDiscount";
 import { useNavigate } from "react-router-dom";
 import "../../styles/CartPage.css";
+import CheckoutForm from "../../components/features/cart/CheckoutFrom";
+
 
 function CartPage() {
   const { cartItems, updateQuantity, removeFromCart, totalPrice, clearCart } = useCart();
   const [orderPlaced, setOrderPlaced] = useState(false);
+  const [discount, setDiscount] = useState(0);   // ✅ new state
   const navigate = useNavigate();
 
   const handleCheckout = () => {
@@ -74,6 +78,15 @@ function CartPage() {
               <span>Subtotal</span>
               <span>{formatPrice(totalPrice)}</span>
             </div>
+
+            {/* ✅ CouponDiscount field */}
+            <CouponDiscount subtotal={totalPrice} setDiscount={setDiscount} />
+
+            <div className="summary-row">
+              <span>Coupon Discount</span>
+              <span>-{formatPrice(discount)}</span>
+            </div>
+
             <div className="summary-row">
               <span>Delivery Fee</span>
               <span className="free-tag">FREE</span>
@@ -81,7 +94,7 @@ function CartPage() {
             <hr />
             <div className="summary-row total-row">
               <span>Total Amount</span>
-              <span>{formatPrice(totalPrice)}</span>
+              <span>{formatPrice(totalPrice - discount)}</span>
             </div>
 
             <Button text="Proceed to Checkout" variant="primary" onClick={handleCheckout} />
@@ -89,6 +102,7 @@ function CartPage() {
           </div>
         </div>
       )}
+      <CheckoutForm />
     </div>
   );
 }
