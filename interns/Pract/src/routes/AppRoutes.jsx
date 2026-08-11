@@ -1,9 +1,10 @@
 import { Routes, Route } from "react-router-dom";
+
 import Home from "../pages/Home/Home";
 import MenuPage from "../pages/Menu/MenuPage";
 import CartPage from "../pages/Cart/CartPage";
 import Contact from "../pages/Contact/Contact";
-import Wishlist from "../Pages/Wishlist/Wishlist";
+import Wishlist from "../pages/Wishlist/Wishlist";
 
 export default function AppRoutes() {
   return (
@@ -13,7 +14,7 @@ export default function AppRoutes() {
       <Route path="/products" element={<MenuPage />} />
       <Route path="/cart" element={<CartPage />} />
       <Route path="/contact" element={<Contact />} />
-      <Route path="/wishlist" element={<Wishlist/>} />
+      <Route path="/wishlist" element={<Wishlist />} />
     </Routes>
   );
 }
