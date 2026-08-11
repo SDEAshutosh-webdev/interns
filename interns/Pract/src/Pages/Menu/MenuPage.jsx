@@ -1,6 +1,7 @@
-import { useState } from "react";
-
+import { useState, useEffect } from "react";
 import FoodCard from "../../components/features/food/FoodCard";
+import { foodService } from "../../api/foodService";
+import CategoryFilter from "../../components/features/food/CategoryFilter";
 import SearchBar from "../../components/common/SearchBar/SearchBar";
 import SortControl from "../../components/features/SortControl";
 
@@ -8,6 +9,8 @@ import { useFoodItems } from "../../hooks/useFoodItems";
 
 import "../../styles/MenuPage.css";
 
+
+const CATEGORIES = ["All", "Breakfast", "Main Course", "Snacks", "Italian"];
 const CATEGORIES = [
   "All",
   "Breakfast",
@@ -19,6 +22,8 @@ const CATEGORIES = [
 function MenuPage() {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [search, setSearch] = useState("");
+  const [allFoodItems, setAllFoodItems] = useState([]);
+  const { foodItems, loading } = useFoodItems(selectedCategory);
   const [sortOption, setSortOption] = useState("default");
 
   const { foodItems, loading } =
@@ -28,6 +33,32 @@ function MenuPage() {
   // SEARCH FILTERING
   // =========================
 
+  useEffect(() => {
+    foodService.getAllFoodItems().then((data) => {
+      setAllFoodItems(data);
+    });
+  }, []);
+
+  // calculate how many items are in the each category
+const categoryCounts = {
+  All: allFoodItems.length,
+
+  Breakfast: allFoodItems.filter(
+    (item) => item.category === "Breakfast"
+  ).length,
+
+  "Main Course": allFoodItems.filter(
+    (item) => item.category === "Main Course"
+  ).length,
+
+  Snacks: allFoodItems.filter(
+    (item) => item.category === "Snacks"
+  ).length,
+
+  Italian: allFoodItems.filter(
+    (item) => item.category === "Italian"
+  ).length,
+};
   const filteredItems = foodItems.filter(
     (item) =>
       item.title
@@ -91,6 +122,12 @@ function MenuPage() {
         </div>
 
       </div>
+    <CategoryFilter
+      categories={CATEGORIES}
+      selectedCategory={selectedCategory}
+      onCategoryChange={setSelectedCategory}
+      categoryCounts={categoryCounts}
+    />
 
 
       {/* ========================= */}

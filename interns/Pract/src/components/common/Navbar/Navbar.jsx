@@ -1,9 +1,11 @@
 import { Link, useLocation } from "react-router-dom";
 import { useCart } from "../../../hooks/useCart";
+import { useWishlist } from "../../../hooks/useWishlist";
 import "../../../styles/Navbar.css";
 
 function Navbar() {
   const location = useLocation();
+  const { wishlist } = useWishlist();
   const { totalCount } = useCart();
 
   return (
@@ -21,6 +23,21 @@ function Navbar() {
         <li className={location.pathname === "/menu" ? "active" : ""}>
           <Link to="/menu">Menu</Link>
         </li>
+        <li
+          className={
+            location.pathname === "/wishlist"
+              ? "active"
+              : ""
+          }
+        >
+          <Link to="/wishlist">
+            ❤️ Wishlist
+            {wishlist.length > 0 && (
+              <span> ({wishlist.length})</span>
+            )}
+          </Link>
+        </li>
+
         <li className={location.pathname === "/cart" ? "active cart-link" : "cart-link"}>
           <Link to="/cart">
             🛒 Cart {totalCount > 0 && <span className="cart-badge">{totalCount}</span>}

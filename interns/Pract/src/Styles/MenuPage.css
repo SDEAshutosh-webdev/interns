@@ -38,8 +38,8 @@
 .pill {
   padding: 10px 22px;
   border-radius: 999px;
-  border: 1px solid #cbd5e1;
-  background: white;
+  border: 1px solid #020202;
+  background: rgb(241, 251, 185);
   color: #475569;
   font-size: 15px;
   font-weight: 600;
