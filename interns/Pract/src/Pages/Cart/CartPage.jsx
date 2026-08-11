@@ -5,7 +5,7 @@ import Button from "../../components/common/Button/Button";
 import CouponDiscount from "../../components/features/cart/CouponDiscount";
 import { useNavigate } from "react-router-dom";
 import "../../styles/CartPage.css";
-import CheckoutForm from "../components/features/cart/CheckoutForm";
+import CheckoutForm from "../../components/features/cart/CheckoutFrom";
 
 
 function CartPage() {
