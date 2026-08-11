@@ -29,35 +29,8 @@ function Home() {
   );
 
   return (
-    <div className="home-page">
-      {/* Hero Section */}
-      <section className="hero-section">
-        <div className="hero-content">
-          <span className="hero-tag">🔥 Lightning Fast Food Delivery</span>
-          <h1 className="hero-title">
-            Delicious Meals Delivered Right To Your Doorstep
-          </h1>
-          <p className="hero-subtitle">
-            Explore hundreds of handcrafted recipes made with fresh, organic ingredients every single day.
-          </p>
-
-          <div className="hero-search-wrapper">
-            <SearchBar search={search} setSearch={setSearch} placeholder="Search Poha, Biryani, Pizza..." />
-          </div>
-
-          <div className="hero-actions">
-            <Button text="Browse Full Menu" variant="primary" onClick={() => navigate("/menu")} />
-            <Button text="Contact Support" variant="outline" onClick={() => navigate("/contact")} />
-          </div>
-        </div>
-      </section>
-
-      {/* Featured Food Items Section */}
-      <section className="products-section">
-        <div className="section-header">
-          <h2>Featured Menu Delicacies</h2>
-          <p>Handpicked favorites loved by food lovers across the city</p>
-        </div>
+    <div className="home-page" style={{ padding: "20px", textAlign: "center" }}>
+      <h1>Welcome to Food Ordering App</h1>
 
         {loading ? (
           <div className="loading-spinner">Loading delicious items...</div>
