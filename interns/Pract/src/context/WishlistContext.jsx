@@ -2,7 +2,7 @@ import { createContext, useEffect, useState } from "react";
 
 export const WishlistContext = createContext();
 
-export function WishlistProvider({ children }) {
+function WishlistProvider({ children }) {
   const [wishlist, setWishlist] = useState(() => {
     const savedWishlist = localStorage.getItem("wishlist");
 
@@ -60,3 +60,5 @@ export function WishlistProvider({ children }) {
     </WishlistContext.Provider>
   );
 }
+
+export { WishlistProvider };
