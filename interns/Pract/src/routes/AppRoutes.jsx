@@ -7,6 +7,7 @@ import Contact from "../pages/Contact/Contact";
 import OrderTrackingPage from "../pages/OrderTracking/OrderTrackingPage";
 import Login from "../Pages/login/login";
 import Wishlist from "../pages/Wishlist/Wishlist";
+import ReviewsPage from "../pages/ReviewsPage";
 
 export default function AppRoutes() {
   return (
@@ -19,6 +20,7 @@ export default function AppRoutes() {
       <Route path="/track-order" element={<OrderTrackingPage />} />
       <Route path="/login" element={<Login />} />
       <Route path="/wishlist" element={<Wishlist />} />
+      <Route path="/reviews/:foodId" element={<ReviewsPage />} />
     </Routes>
   );
 }

@@ -103,3 +103,18 @@
   background: #e65a00;
   transform: scale(1.03);
 }
+
+.review-btn {
+  margin-top: 10px;
+  padding: 10px 16px;
+  border: 1px solid #ff8a65;
+  background: white;
+  color: #ff8a65;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 180px;
+}
+
+.review-btn:hover {
+  background: #fff3ee;
+}
