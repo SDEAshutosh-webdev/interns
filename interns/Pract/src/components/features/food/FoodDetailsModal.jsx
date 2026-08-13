@@ -1,9 +1,13 @@
+import { useState } from "react";
 import "./FoodDetailsModal.css";
 import { useCart } from "../../../hooks/useCart";
 import { formatPrice } from "../../../utils/formatters";
 
+import { useNavigate } from "react-router-dom";
+
 function FoodDetailsModal({ item, closePopup }) {
   const { addToCart } = useCart();
+ const navigate = useNavigate();
 
   if (!item) {
     return null;
@@ -65,16 +69,32 @@ function FoodDetailsModal({ item, closePopup }) {
           <p className="food-modal-description">{description}</p>
 
 
-          <div className="food-modal-footer">
-            <span className="food-modal-price">{formatPrice(price)}</span>
+         <div className="food-modal-footer">
+  <span className="food-modal-price">{formatPrice(price)}</span>
 
-            <button
-              className="food-modal-cart-btn"
-              onClick={handleAddToCart}
-            >
-              + Add to Cart
-            </button>
-          </div>
+  <div className="food-modal-actions">
+    <button
+      className="food-modal-cart-btn"
+      onClick={handleAddToCart}
+    >
+      + Add to Cart
+    </button>
+
+   <button
+  className="reviews-btn"
+  onClick={() =>
+    navigate(`/reviews/${title.toLowerCase().replace(/\s+/g, "-")}`)
+  }
+>
+<span className="reviews-star">🌟 </span>
+  Reviews & Ratings
+</button>
+
+  </div>
+</div>
+
+
+
         </div>
       </div>
     </div>

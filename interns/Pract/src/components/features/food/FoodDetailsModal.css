@@ -271,7 +271,7 @@
 }
 
 .food-modal-cart-btn:hover {
-  opacity: 0.9;
+transform: translateY(-1px);
 }
 
 /* Mobile */
@@ -306,4 +306,46 @@
   .food-modal-cart-btn {
     width: 100%;
   }
+}
+
+.food-modal-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 220px;
+}
+
+.reviews-btn {
+  width: 100%;
+  padding: 12px 22px;
+  border: none;
+  border-radius: 10px;
+  background: #28a745;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  box-sizing: border-box;
+}
+
+.reviews-star {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.food-modal-cart-btn,
+.reviews-btn {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.food-modal-cart-btn:hover,
+.reviews-btn:hover {
+  transform: translateY(-3px);  
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
 }
