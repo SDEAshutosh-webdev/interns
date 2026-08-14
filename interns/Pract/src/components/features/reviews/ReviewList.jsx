@@ -40,7 +40,12 @@ const handleAddReview = (newReview) => {
 
   <div className="summary-rating">
     <span className="summary-score">{averageRating}</span>
-    <span className="summary-stars">★★★★★</span>
+
+    <span className="summary-stars">
+  {"★".repeat(Math.round(Number(averageRating)))}
+  {"☆".repeat(5 - Math.round(Number(averageRating)))}
+    </span> 
+    
     <span className="summary-count">
       ({reviewList.length} reviews)
     </span>
