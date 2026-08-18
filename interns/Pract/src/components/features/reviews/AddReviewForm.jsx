@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 const AddReviewForm = ({ onAddReview }) => {
   const [name, setName] = useState("");
-  const [rating, setRating] = useState(5);
+  const [rating, setRating] = useState();
   const [comment, setComment] = useState("");
 
   const ratings = [
@@ -14,28 +14,32 @@ const AddReviewForm = ({ onAddReview }) => {
   ];
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    if (!name.trim() || !comment.trim()) {
-      alert("Please fill all fields");
-      return;
-    }
+  if (name.trim() === "" || rating === 0 || comment.trim() === "") {
+    alert("Please fill all details");
+    return;
+  }
 
-    const newReview = {
-      id: Date.now(),
-      name: name.trim(),
-      rating: rating,
-      comment: comment.trim(),
-    };
-
-    onAddReview(newReview);
-
-    setName("");
-    setRating(5);
-    setComment("");
+  const newReview = {
+    id: Date.now(),
+    name: name.trim(),
+    rating,
+    comment: comment.trim(),
   };
 
-  const selectedRating = ratings.find((item) => item.value === rating);
+  onAddReview(newReview);
+
+  setName("");
+  setRating(0);      
+  setComment("");
+};
+
+  const selectedRating =
+  ratings.find((item) => item.value === rating) || {
+    emoji: "⭐",
+    label: "Tap a star to rate",
+  };
 
   return (
     <form className="review-form" onSubmit={handleSubmit}>

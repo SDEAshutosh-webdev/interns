@@ -1,0 +1,42 @@
+.category-pills {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+
+.pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border: 1px solid #010101;
+  border-radius: 999px;
+  background: rgb(236, 250, 136);
+  cursor: pointer;
+  font-size: 15px;
+  transition: all 0.2s ease;
+}
+
+.pill:hover {
+  transform: translateY(-1px);
+}
+
+.pill.active {
+  font-weight: 600;
+}
+
+.category-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 6px;
+  border-radius: 999px;
+  border: 1px solid black;
+  font-size: 12px;
+  font-weight: 600;
+  background: rgb(205, 241, 251);
+  color: rgb(0, 0, 0);
+}

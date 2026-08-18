@@ -11,20 +11,23 @@ function App() {
   const [darkMode, setDarkMode] = useState(false);
 
   return (
-    <CartProvider>
-      <div className={darkMode ? "app-container dark-mode" : "app-container"}>
-        <Navbar />
+    <WishlistProvider>
+      <CartProvider>
+        <div className={darkMode ? "app-container dark-mode" : "app-container"}>
+          <Navbar />
 
-        <main className="main-content">
-          <AppRoutes />
-        </main>
+          <main className="main-content">
+            <AppRoutes />
+          </main>
 
-        <Footer
-          darkMode={darkMode}
-          setDarkMode={setDarkMode}
-        />
-      </div>
-    </CartProvider>
+          <Footer
+            darkMode={darkMode}
+            setDarkMode={setDarkMode}
+          />
+        </div>
+      </CartProvider>
+    </WishlistProvider>
+
   );
 }
 

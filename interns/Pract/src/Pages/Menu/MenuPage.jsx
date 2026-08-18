@@ -1,24 +1,32 @@
-import { useState } from "react";
-
+import { useState, useEffect } from "react";
 import FoodCard from "../../components/features/food/FoodCard";
+import { foodService } from "../../api/foodService";
+import CategoryFilter from "../../components/features/food/CategoryFilter";
 import SearchBar from "../../components/common/SearchBar/SearchBar";
 import SortControl from "../../components/features/SortControl";
 
 import { useFoodItems } from "../../hooks/useFoodItems";
 
-import "../../styles/MenuPage.css";
+import "../../Styles/MenuPage.css";
+import FoodDetailsModal from "../../components/features/food/FoodDetailsModal";
 
-const CATEGORIES = [
-  "All",
-  "Breakfast",
-  "Main Course",
-  "Snacks",
-  "Italian",
-];
+
+const CATEGORIES = ["All", "Breakfast", "Main Course", "Snacks", "Italian"];
+
 
 function MenuPage() {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [search, setSearch] = useState("");
+  const [selectedItem, setSelectedItem] = useState(null);
+  const [allFoodItems, setAllFoodItems] = useState([]);
+
+  const handleOpen = (item) => {
+    setSelectedItem(item);
+  };
+
+  const closePopup = () => {
+    setSelectedItem(null);
+  };
   const [sortOption, setSortOption] = useState("default");
 
   const { foodItems, loading } =
@@ -28,6 +36,32 @@ function MenuPage() {
   // SEARCH FILTERING
   // =========================
 
+  useEffect(() => {
+    foodService.getAllFoodItems().then((data) => {
+      setAllFoodItems(data);
+    });
+  }, []);
+
+  // calculate how many items are in the each category
+  const categoryCounts = {
+    All: allFoodItems.length,
+
+    Breakfast: allFoodItems.filter(
+      (item) => item.category === "Breakfast"
+    ).length,
+
+    "Main Course": allFoodItems.filter(
+      (item) => item.category === "Main Course"
+    ).length,
+
+    Snacks: allFoodItems.filter(
+      (item) => item.category === "Snacks"
+    ).length,
+
+    Italian: allFoodItems.filter(
+      (item) => item.category === "Italian"
+    ).length,
+  };
   const filteredItems = foodItems.filter(
     (item) =>
       item.title
@@ -91,6 +125,12 @@ function MenuPage() {
         </div>
 
       </div>
+      <CategoryFilter
+        categories={CATEGORIES}
+        selectedCategory={selectedCategory}
+        onCategoryChange={setSelectedCategory}
+        categoryCounts={categoryCounts}
+      />
 
 
       {/* ========================= */}
@@ -102,11 +142,10 @@ function MenuPage() {
         {CATEGORIES.map((cat) => (
           <button
             key={cat}
-            className={`pill ${
-              selectedCategory === cat
-                ? "active"
-                : ""
-            }`}
+            className={`pill ${selectedCategory === cat
+              ? "active"
+              : ""
+              }`}
             onClick={() =>
               setSelectedCategory(cat)
             }
@@ -147,14 +186,13 @@ function MenuPage() {
         ) : sortedItems.length > 0 ? (
 
           <div className="products-grid">
-
             {sortedItems.map((item) => (
               <FoodCard
                 key={item.id}
                 item={item}
+                isOpen={() => handleOpen(item)}
               />
             ))}
-
           </div>
 
         ) : (
@@ -169,8 +207,12 @@ function MenuPage() {
 
       </div>
 
+      {selectedItem && (
+        <FoodDetailsModal item={selectedItem} closePopup={closePopup} />
+      )}
     </div>
   );
+
 }
 
 export default MenuPage;
