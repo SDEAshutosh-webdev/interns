@@ -5,9 +5,12 @@ import { formatPrice } from "../../../utils/formatters";
 import "../../../Styles/FoodCard.css";
 import "../../../Styles/Wishlist.css";
 
+
+
 function FoodCard({ item, isOpen }) {
   const { addToCart } = useCart();
   const { toggleWishlist, isInWishlist } = useWishlist();
+  
 
   const {
     id,
@@ -59,6 +62,8 @@ function FoodCard({ item, isOpen }) {
           >
             + Add to Cart
           </button>
+         
+         
         </div>
       </div>
     </div>

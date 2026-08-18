@@ -1,12 +1,18 @@
-import React from "react";
-import "../../../../styles/ReviewSection.css";
+import React, { useState } from "react";
+import "../../../Styles/ReviewSection.css";
+import AddReviewForm from "./AddReviewForm";
 
 const ReviewList = ({ foodName, reviews }) => {
+  const [reviewList, setReviewList] = useState(reviews || []);
+
+const handleAddReview = (newReview) => {
+  setReviewList([newReview, ...reviewList]);
+};
   const averageRating =
-    reviews.length > 0
+    reviewList.length > 0
       ? (
-          reviews.reduce((sum, review) => sum + Number(review.rating), 0) /
-          reviews.length
+          reviewList.reduce((sum, review) => sum + Number(review.rating), 0) /
+          reviewList.length
         ).toFixed(1)
       : "0.0";
 
@@ -30,15 +36,24 @@ const ReviewList = ({ foodName, reviews }) => {
   return (
     <div className="review-section">
       <div className="review-summary">
-        <h2>Reviews for {foodName}</h2>
-        <div className="summary-rating">
-          <span className="summary-score">{averageRating}</span>
-          <span className="summary-stars">★★★★★</span>
-          <span className="summary-count">({reviews.length} reviews)</span>
-        </div>
-      </div>
+  <h2>{foodName} Reviews & Ratings</h2>
 
-      {reviews.map((review) => (
+  <div className="summary-rating">
+    <span className="summary-score">{averageRating}</span>
+
+    <span className="summary-stars">
+  {"★".repeat(Math.round(Number(averageRating)))}
+  {"☆".repeat(5 - Math.round(Number(averageRating)))}
+    </span> 
+    
+    <span className="summary-count">
+      ({reviewList.length} reviews)
+    </span>
+  </div>
+</div>
+      <AddReviewForm onAddReview={handleAddReview} />
+
+      {reviewList.map((review) => (
         <div className="review-card" key={review.id}>
           <div className="review-avatar">
             {review.name.charAt(0).toUpperCase()}
@@ -63,7 +78,7 @@ const ReviewList = ({ foodName, reviews }) => {
                 {getEmoji(review.rating)}
               </span>
             </div>
-
+ 
             <p>{review.comment}</p>
 
             <div className="review-actions">

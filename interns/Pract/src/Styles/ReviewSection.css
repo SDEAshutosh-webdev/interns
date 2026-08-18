@@ -1,7 +1,9 @@
-<!--review Section-->
+/* =================================
+   REVIEW SECTION
+================================= */
 
 .review-section {
-  max-width: 850px;
+  max-width: 900px;
   margin: 40px auto;
   padding: 30px;
   background: #ffffff;
@@ -9,45 +11,71 @@
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
 }
 
-.review-section h2 {
-  margin: 0 0 25px;
-  font-size: 28px;
-  color: #222;
-}
+/* =================================
+   REVIEW SUMMARY (CENTERED)
+================================= */
 
 /* =================================
-   REVIEW SUMMARY
+   REVIEW SUMMARY (CENTER ONLY)
 ================================= */
 
 .review-summary {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
-  margin-bottom: 25px;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 35px;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+}
+
+.review-summary h2 {
+  margin: 0;
+  font-size: 30px;
+  font-weight: 800;
+  text-transform: capitalize;
+  color: #ab6919 ; 
+  letter-spacing: 0.5px;
+}
+
+.review-summary h2::after {
+  content: "";
+  display: block;
+  width: 120px;
+  height: 3px;
+  background: #04e71e;
+  margin: 10px auto 0;
+  border-radius: 999px;
 }
 
 .summary-rating {
   display: flex;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 12px;
 }
 
 .summary-score {
-  font-size: 30px;
+  font-size: 34px;
   font-weight: 700;
-  color: #222;
+  color: #111827;
 }
 
 .summary-stars {
   color: #fbbf24;
-  font-size: 22px;
+  font-size: 24px;
+  letter-spacing: 2px;
 }
 
 .summary-count {
-  color: #666;
-  font-size: 14px;
+  color: #6b7280;
+  font-size: 15px;
+  font-weight: 500;
 }
-
 /* =================================
    REVIEW CARD
 ================================= */
@@ -56,7 +84,7 @@
   display: flex;
   gap: 15px;
   padding: 20px;
-  margin-bottom: 15px;
+  margin-bottom: 18px;
   background: #fff;
   border: 1px solid #eeeeee;
   border-radius: 15px;
@@ -103,8 +131,8 @@
 /* Avatar */
 
 .review-avatar {
-  min-width: 48px;
-  height: 48px;
+  min-width: 52px;
+  height: 52px;
   border-radius: 50%;
   background: linear-gradient(135deg, #ff8a00, #ffb347);
   color: white;
@@ -417,13 +445,21 @@
   }
 
   .review-summary {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.review-summary h2 {
+  font-size: 28px;
+}
+
+  .summary-score {
+    font-size: 30px;
   }
 
-  .review-section h2 {
-    font-size: 23px;
+  .summary-stars {
+    font-size: 20px;
   }
 
   .star {
