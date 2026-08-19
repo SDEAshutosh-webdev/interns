@@ -3,7 +3,6 @@ import Navbar from "./components/common/Navbar/Navbar";
 import Footer from "./components/common/Footer/Footer";
 import AppRoutes from "./routes/AppRoutes";
 import { CartProvider } from "./context/CartProvider";
-import "./Styles/App.css";
 import { WishlistProvider } from "./context/WishlistContext";
 import "./styles/App.css";
 
@@ -11,8 +10,8 @@ function App() {
   const [darkMode, setDarkMode] = useState(false);
 
   return (
-    <WishlistProvider>
-      <CartProvider>
+    <CartProvider>
+      <WishlistProvider>
         <div className={darkMode ? "app-container dark-mode" : "app-container"}>
           <Navbar />
 
@@ -25,9 +24,8 @@ function App() {
             setDarkMode={setDarkMode}
           />
         </div>
-      </CartProvider>
-    </WishlistProvider>
-
+      </WishlistProvider>
+    </CartProvider>
   );
 }
 
