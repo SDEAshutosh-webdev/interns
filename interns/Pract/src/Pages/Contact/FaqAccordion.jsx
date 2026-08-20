@@ -42,7 +42,6 @@ function FaqAccordion() {
   return (
     <section className="faq-section">
       <div className="faq-container">
-
         <h2>Frequently Asked Questions</h2>
 
         <p className="faq-subtitle">
@@ -52,7 +51,6 @@ function FaqAccordion() {
         <div className="faq-list">
           {faqData.map((faq) => (
             <div className="faq-item" key={faq.id}>
-
               <button
                 className="faq-question"
                 onClick={() => handleFaqClick(faq.id)}
@@ -60,7 +58,7 @@ function FaqAccordion() {
                 <span>{faq.question}</span>
 
                 <span className="faq-icon">
-                  {activeFaqId === faq.id ? "−" : "+"}
+                  {activeFaqId === faq.id ? "-" : "+"}
                 </span>
               </button>
 
@@ -69,11 +67,9 @@ function FaqAccordion() {
                   <p>{faq.answer}</p>
                 </div>
               )}
-
             </div>
           ))}
         </div>
-
       </div>
     </section>
   );
