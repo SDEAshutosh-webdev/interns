@@ -70,12 +70,18 @@ export const reviewsData = {
       name: "Yashshri",
       rating: 5,
       comment: "Best Poha! Fresh and tasty.",
+      avatar: "/images/avatars/Avatar1.png",
+      date: "May 25, 2026",
+      verified: true,
     },
     {
       id: 2,
       name: "Aarav",
       rating: 4,
       comment: "Really enjoyed the flavor.",
+      avatar: "/images/avatars/Avatar22.png",
+      date: "May 24, 2026",
+      verified: true,
     },
   ],
 
@@ -85,6 +91,9 @@ export const reviewsData = {
       name: "Sneha",
       rating: 5,
       comment: "Amazing Biryani, full of spices.",
+      avatar: "/images/avatars/Avatar3.png",
+      date: "May 23, 2026",
+      verified: true,
     },
   ],
 
@@ -94,6 +103,9 @@ export const reviewsData = {
       name: "Rohit",
       rating: 4,
       comment: "Paneer was soft and creamy.",
+      avatar: "/images/avatars/Avatar44.png",
+      date: "May 22, 2026",
+      verified: true,
     },
   ],
 
@@ -103,6 +115,9 @@ export const reviewsData = {
       name: "Priya",
       rating: 5,
       comment: "Burger was super crispy and delicious.",
+      avatar: "/images/avatars/Avatar5.png",
+      date: "May 21, 2026",
+      verified: true,
     },
   ],
 
@@ -112,6 +127,9 @@ export const reviewsData = {
       name: "Karan",
       rating: 5,
       comment: "Cheese was perfectly melted.",
+      avatar: "/images/avatars/Avatar66.png",
+      date: "May 20, 2026",
+      verified: true,
     },
   ],
 
@@ -121,6 +139,9 @@ export const reviewsData = {
       name: "Anjali",
       rating: 4,
       comment: "Crispy samosa and tasty chutney.",
+      avatar: "/images/avatars/Avatar7.png",
+      date: "May 19, 2026",
+      verified: true,
     },
   ],
 };
