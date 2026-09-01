@@ -1,6 +1,6 @@
 import Button from "../../components/common/Button/Button";
 import "../../styles/Contact.css";
-
+import FaqAccordion from "./FaqAccordion";
 function Contact() {
   return (
     <div className="contact-page">
@@ -51,6 +51,7 @@ function Contact() {
           <Button text="Send Message" variant="primary" type="submit" />
         </form>
       </div>
+      <FaqAccordion />
     </div>
   );
 }
