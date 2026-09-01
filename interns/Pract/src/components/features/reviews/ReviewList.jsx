@@ -6,7 +6,19 @@ const ReviewList = ({ foodName, reviews }) => {
   const [reviewList, setReviewList] = useState(reviews || []);
 
 const handleAddReview = (newReview) => {
-  setReviewList([newReview, ...reviewList]);
+  const reviewWithDetails = {
+    ...newReview,
+    id: Date.now(),
+    avatar: "/images/avatars/default.png",
+    date: new Date().toLocaleDateString("en-US", {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+    }),
+    verified: false,
+  };
+
+  setReviewList((prev) => [reviewWithDetails, ...prev]);
 };
   const averageRating =
     reviewList.length > 0
@@ -55,21 +67,35 @@ const handleAddReview = (newReview) => {
 
       {reviewList.map((review) => (
         <div className="review-card" key={review.id}>
-          <div className="review-avatar">
-            {review.name.charAt(0).toUpperCase()}
-          </div>
+        <div className="review-avatar">
+       <img
+       src={review.avatar || "/images/avatars/default.png"}
+       alt={`${review.name}'s avatar`}
+       />
+       </div>
 
           <div className="review-content">
             <div className="review-header">
-              <div>
-                <h4>{review.name}</h4>
-                <span className="verified-user">✔ Verified Customer</span>
-              </div>
+  <div>
+    <div className="review-name-row">
+      <h4>{review.name}</h4>
 
-              <div className="rating-badge">
-                {review.rating} ★
-              </div>
-            </div>
+      {review.verified && (
+        <span className="verified-badge">✓</span>
+      )}
+    </div>
+
+    {review.verified && (
+      <span className="verified-user">
+        ✓ Verified Customer
+      </span>
+    )}
+  </div>
+
+  <span className="review-date">
+    {review.date}
+  </span>
+  </div>
 
             <div className="review-rating">
               {"★".repeat(Number(review.rating))}
@@ -83,6 +109,10 @@ const handleAddReview = (newReview) => {
 
             <div className="review-actions">
               <button className="like-btn">❤️ Helpful</button>
+
+              <div className="rating-badge">
+              {review.rating} ★
+                 </div>
             </div>
           </div>
         </div>

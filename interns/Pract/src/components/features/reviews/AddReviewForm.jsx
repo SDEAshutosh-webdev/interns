@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 const AddReviewForm = ({ onAddReview }) => {
   const [name, setName] = useState("");
-  const [rating, setRating] = useState();
+  const [rating, setRating] = useState(0);
   const [comment, setComment] = useState("");
 
   const ratings = [
@@ -22,7 +22,6 @@ const AddReviewForm = ({ onAddReview }) => {
   }
 
   const newReview = {
-    id: Date.now(),
     name: name.trim(),
     rating,
     comment: comment.trim(),
