@@ -5,7 +5,7 @@ import AppRoutes from "./routes/AppRoutes";
 import { CartProvider } from "./context/CartProvider";
 import { WishlistProvider } from "./context/WishlistContext";
 import "./styles/App.css";
-
+import PromoBanner from "./components/features/food/offers/PromoBanner";
 function App() {
   const [darkMode, setDarkMode] = useState(false);
 
@@ -14,7 +14,7 @@ function App() {
       <WishlistProvider>
         <div className={darkMode ? "app-container dark-mode" : "app-container"}>
           <Navbar />
-
+          <PromoBanner /> 
           <main className="main-content">
             <AppRoutes />
           </main>
